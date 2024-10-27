@@ -87,22 +87,38 @@
 ;; config.el
 (after! python
   (setq python-shell-interpreter "python3"))  ;; Python3を使用
+(after! lsp-mode
+  (setq lsp-headerline-breadcrumb-enable nil) ;; ヘッダ表示を無効化（好みに応じて）
+  (setq lsp-signature-auto-activate nil)) ;; シグネチャ表示を抑制
 
-;; company 設定
-(use-package! company
-  :config
-  (after! company
-    (setq company-idle-delay 0.2  ;; 補完を表示するまでの遅延を0.2秒に設定
-          company-minimum-prefix-length 0))) ;; 1文字入力するごとに補完を開始
+(setq doom-font (font-spec :size 15))
 
-;; LSP support for programming languages
-(use-package! company
-  :hook (after-init . global-company-mode)
+
+(use-package lsp-mode
+  :ensure t
+  :hook (java-mode . lsp)
   :config
-  (setq company-idle-delay 0.3)
-  (use-package! corfu
-    :init
-    (global-corfu-mode)
-    :custom
-    (corfu-auto t) ;; 自動補完
-    (corfu-cycle t))) ;; 上下のサイクル
+  (setq lsp-enable-snippet nil))
+
+(use-package lsp-java
+  :ensure t
+  :after lsp
+  :config (add-hook 'java-mode-hook 'lsp))
+
+;; (use-package! company
+;;   :config
+;;   (after! company
+;;     (setq company-idle-delay 0.2  ;; 補完を表示するまでの遅延を0.2秒に設定
+;;           company-minimum-prefix-length 0))) ;; 1文字入力するごとに補完を開始
+
+;; ;; LSP support for programming languages
+;; (use-package! company
+;;   :hook (after-init . global-company-mode)
+;;   :config
+;;   (setq company-idle-delay 0.3)
+;;   (use-package! corfu
+;;     :init
+;;     (global-corfu-mode)
+;;     :custom
+;;     (corfu-auto t) ;; 自動補完
+;;     (corfu-cycle t))) ;; 上下のサイクル

@@ -26,9 +26,9 @@
        vertico           ; the search engine of the future
        ;; init.el
        ;; Enable completion modules
-       (completion
-        (company +childframe)  ;; Company for completion framework with a floating child frame
-        (ivy +fuzzy))          ;; Ivy for better completion experience with fuzzy matching
+       ;; (completion
+       ;;  (company +childframe)  ;; Company for completion framework with a floating child frame
+       ;;  (ivy +fuzzy))          ;; Ivy for better completion experience with fuzzy matching
 
 
        :ui
@@ -142,7 +142,7 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
-       ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
+       (java +lsp)       ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
@@ -152,7 +152,7 @@
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       ;;nix               ; I hereby declare "nix geht mehr!"
+       ;; nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        org               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
@@ -190,11 +190,7 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        (shell +vterm)
-       (package! docker)
 
        :config
        ;;literate
        (default +bindings +smartparens))
-(after! lsp-mode
-  (setq lsp-headerline-breadcrumb-enable nil) ;; ヘッダ表示を無効化（好みに応じて）
-  (setq lsp-signature-auto-activate nil)) ;; シグネチャ表示を抑制
